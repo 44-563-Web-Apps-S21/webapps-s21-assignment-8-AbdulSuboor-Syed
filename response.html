@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Response web page</title>
+</head>
+<body>
+    <div class="Introduction">
+        <h1>Bits of advice</h1>
+        <h4>To get advices click on the button</h4>
+        <div>
+            <button onclick="getBitsofadvice()">Get Bits of advice</button>
+        </div>
+    </div>
+
+    <div id="Bitsofadvice"></div>
+    <script>
+        const getBitsofadvice = () => {
+            fetch('http://127.0.0.1:3001').then(
+                (res) => {
+                    console.log(res)
+                    return res.text()
+                }
+            ).then(data => {
+            
+                console.log(data)
+                document.getElementById("Bitsofadvice").innerHTML = data
+            }).catch(err => {
+                document.getElementById("Bitsofadvice").innerHTML = err
+            })
+        }
+    </script>
+</body>
+</html>
